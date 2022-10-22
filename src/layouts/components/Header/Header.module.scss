@@ -1,0 +1,91 @@
+@use '../../../scss/' as *;
+
+.wrapper {
+    height: $header-height;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    transition: height 0.3s ease, background-color 0.3s ease;
+    z-index: 999;
+
+    &.shrink {
+        height: $header-shrink-height;
+        background-color: $body-background;
+    }
+}
+
+.header-container {
+    @include flex(center, space-between);
+
+    height: 100%;
+    padding: 0 2rem;
+
+    @include mobile {
+        justify-content: center;
+    }
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 600;
+
+    @include flex(center, unset);
+
+    .logo-image {
+        width: 50px;
+        margin-right: 10px;
+
+        @include mobile {
+            width: 30px;
+            margin-right: 0;
+        }
+    }
+}
+
+.nav-menu {
+    @include flex(center, unset);
+    gap: 0.8rem;
+
+    .nav-menu-item {
+        font-size: 1.2rem;
+        font-weight: 700;
+        padding: 8px 12px;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            transition: width 0.5s ease;
+            background-color: $main-color;
+        }
+
+        &.active::after,
+        &:hover::after {
+            width: 100%;
+        }
+
+        @include mobile {
+            font-size: 1.6rem;
+        }
+    }
+
+    @include mobile {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        height: 5rem;
+        width: 100%;
+        background-color: $body-background;
+        padding: 0 2rem;
+        box-shadow: $box-shadow;
+        gap: 0;
+
+        @include flex(center, space-between);
+    }
+}

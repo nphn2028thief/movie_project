@@ -1,5 +1,5 @@
 import axios from 'axios';
-import queryString from 'query-string';
+import queryString, { parse, stringify } from 'query-string';
 
 import apiConfig from './apiConfig';
 
