@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
@@ -25,12 +26,29 @@ const navMenu = [
 const cx = classNames.bind(styles);
 
 function Header() {
+    const headerRef = useRef();
     const { pathname } = useLocation();
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 0) {
+                headerRef.current.style.backgroundImage = 'linear-gradient(to top, #0f0f0f, #000)';
+            } else {
+                headerRef.current.style.backgroundImage = 'none';
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     const active = navMenu.findIndex((e) => e.path === pathname);
 
     return (
-        <div className={cx('wrapper')}>
+        <div ref={headerRef} className={cx('wrapper')}>
             <div className={cx('container', 'header-container')}>
                 <div className={cx('logo')}>
                     <img src={images.logo} className={cx('logo-image')} alt="logo" />
@@ -49,22 +67,6 @@ function Header() {
                             {item.name}
                         </Link>
                     ))}
-
-                    {/* <li>
-                        <Link to="/" className={cx('nav-menu-item')}>
-                            Home
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/movie" className={cx('nav-menu-item')}>
-                            Movies
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/tv" className={cx('nav-menu-item')}>
-                            TV Series
-                        </Link>
-                    </li> */}
                 </ul>
             </div>
         </div>

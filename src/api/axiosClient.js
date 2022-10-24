@@ -1,5 +1,6 @@
 import axios from 'axios';
-import queryString, { parse, stringify } from 'query-string';
+// import queryString from 'query-string';
+import qs from 'qs';
 
 import apiConfig from './apiConfig';
 
@@ -8,16 +9,25 @@ const axiosClient = axios.create({
     headers: {
         'Content-Type': 'application/json',
     },
-    paramsSerializer: (params) => queryString.stringify({ ...params, api_key: apiConfig.apiKey }),
+    // paramsSerializer: (params) => qs.stringify({ ...params, api_key: apiConfig.apiKey }),
+    // params: {
+    //     api_key: apiConfig.apiKey,
+    // },
 });
 
-axiosClient.interceptors.request.use(async (config) => config);
+axiosClient.interceptors.request.use((config) => {
+    config.params = config.params || {};
+    config.params['api_key'] = apiConfig.apiKey;
+    // config.params['language'] = 'vi';
+
+    return config;
+});
+
 axiosClient.interceptors.response.use(
     (response) => {
         if (response && response.data) {
             return response.data;
         }
-
         return response;
     },
     (error) => {
