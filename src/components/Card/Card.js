@@ -50,7 +50,7 @@ function Card({ title, category, type, id, delay }) {
             <div className="section mb-3">
                 <div className="section__header mb-2">
                     <h2 className={cx('title')}>{title}</h2>
-                    <Button to="/movie" btn outline small>
+                    <Button to="/movie" className={cx('more-btn')} btn outline small>
                         View more
                     </Button>
                 </div>

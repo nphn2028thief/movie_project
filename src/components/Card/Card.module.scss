@@ -12,6 +12,13 @@
     }
 }
 
+.more-btn {
+    @include tablet {
+        padding: 0.5rem 1.6rem;
+        font-size: 0.9rem;
+    }
+}
+
 /* Card Item */
 .card-item {
     position: relative;
