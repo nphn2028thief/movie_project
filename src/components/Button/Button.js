@@ -41,7 +41,7 @@ function Button({
 
     return (
         <Component className={classes} {..._props}>
-            <span className={cx('title')}>{children}</span>
+            <span>{children}</span>
         </Component>
     );
 }
