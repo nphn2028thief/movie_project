@@ -15,7 +15,7 @@
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
-    z-index: -2;
+    z-index: 2;
 
     &::after {
         content: '';
@@ -85,7 +85,9 @@
     }
 
     @include mobile {
-        align-items: center;
+        display: grid;
+        grid-template-columns: 1fr;
+        text-align: center;
         padding: 0;
     }
 
@@ -111,6 +113,11 @@
         .watch-btn {
             padding-left: 1.9rem;
             padding-right: 1.9rem;
+        }
+
+        @include mobile {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
         }
     }
 }
