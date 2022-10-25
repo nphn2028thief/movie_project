@@ -8,7 +8,7 @@ import Button from '../Button';
 
 const cx = classNames.bind(styles);
 
-function SliderItem({ data, isActive }) {
+function SliderItem({ data, isActive, onClick }) {
     const sliderItemRef = useRef();
     const navigate = useNavigate();
 
@@ -32,7 +32,7 @@ function SliderItem({ data, isActive }) {
                         <Button btn primary className={cx('watch-btn')} onClick={() => handleNavigate(data.id)}>
                             Watch Now
                         </Button>
-                        <Button btn outline onClick={() => console.log('hello')}>
+                        <Button btn outline onClick={onClick}>
                             Watch Trailer
                         </Button>
                     </div>

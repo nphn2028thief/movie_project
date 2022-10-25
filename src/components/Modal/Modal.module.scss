@@ -15,23 +15,11 @@
 .container {
     width: 50%;
     background-color: $body-background;
-    padding: 2rem;
-    transform: translateY(-250px);
+    padding: 56px 16px 16px;
     transition: transform 0.6s ease;
     position: relative;
 
     @include tablet {
         width: 80%;
-    }
-
-    .close-btn {
-        position: absolute;
-        right: 5px;
-        top: 5px;
-        cursor: pointer;
-
-        &:hover {
-            color: $main-color;
-        }
     }
 }

@@ -1,5 +1,4 @@
 import classNames from 'classnames/bind';
-import { UilMultiply } from '@iconscout/react-unicons';
 
 import Portal from '../Portal';
 import styles from './Modal.module.scss';
@@ -12,12 +11,7 @@ function Modal({ isOpen = false, children }) {
     return (
         <Portal>
             <div className={cx('modal')}>
-                <div className={cx('container')}>
-                    <div className={cx('close-btn')}>
-                        <UilMultiply />
-                    </div>
-                    {children}
-                </div>
+                <div className={cx('container')}>{children}</div>
             </div>
         </Portal>
     );

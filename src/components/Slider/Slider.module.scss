@@ -109,3 +109,24 @@
         display: none;
     }
 }
+
+/* Modal */
+.close-btn {
+    @include flex(center, center);
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 12px;
+    cursor: pointer;
+
+    &:hover {
+        color: $main-color;
+    }
+}
+
+.trailer-text {
+    text-align: center;
+    letter-spacing: 1px;
+    font-size: 1.6rem;
+    color: #ccc;
+}

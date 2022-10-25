@@ -1,7 +1,4 @@
 import axios from 'axios';
-// import queryString from 'query-string';
-import qs from 'qs';
-
 import apiConfig from './apiConfig';
 
 const axiosClient = axios.create({
