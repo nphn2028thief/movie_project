@@ -79,7 +79,8 @@
         position: fixed;
         bottom: 0;
         left: 0;
-        height: 5rem;
+        right: 0;
+        height: $header-height;
         width: 100%;
         background-color: $body-background;
         padding: 0 2rem;
