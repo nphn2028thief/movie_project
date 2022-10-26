@@ -8,16 +8,22 @@ function HomePage() {
             <Slider />
 
             {/* Trending movie list */}
-            <Card title="Trending Movies" category={category.movie} type={movieType.popupar} delay={2000} />
+            <Card title="Trending Movies" to="/movie" category={category.movie} type={movieType.popupar} delay={2000} />
 
             {/* Top rate movie list */}
-            <Card title="Top Rated Movies" category={category.movie} type={movieType.top_rated} delay={2100} />
+            <Card
+                title="Top Rated Movies"
+                to="/movie"
+                category={category.movie}
+                type={movieType.top_rated}
+                delay={2100}
+            />
 
             {/* Trending Tv list */}
-            <Card title="Trending TV Series" category={category.tv} type={tvType.popupar} delay={2200} />
+            <Card title="Trending TV Series" to="/tv" category={category.tv} type={tvType.popupar} delay={2200} />
 
             {/* Top rate Tv list */}
-            <Card title="Top Rated TV Series" category={category.tv} type={tvType.top_rated} delay={2300} />
+            <Card title="Top Rated TV Series" to="/tv" category={category.tv} type={tvType.top_rated} delay={2300} />
         </>
     );
 }

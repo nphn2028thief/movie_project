@@ -1,0 +1,16 @@
+@use '../../scss/' as *;
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 24px;
+    margin-bottom: 2rem;
+
+    @include tablet {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
+
+.loadmore-btn {
+    @include flex(center, center);
+}

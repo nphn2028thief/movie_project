@@ -19,7 +19,7 @@ import CardItem from './CardItem';
 
 const cx = classNames.bind(styles);
 
-function Card({ title, category, type, id, delay }) {
+function Card({ title, to, category, type, id, delay }) {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
@@ -29,7 +29,7 @@ function Card({ title, category, type, id, delay }) {
 
             if (type !== 'similar') {
                 switch (category) {
-                    case category.movie:
+                    case 'movie':
                         response = await tmdbApi.getMoviesList(type, params);
                         break;
                     default:
@@ -50,7 +50,7 @@ function Card({ title, category, type, id, delay }) {
             <div className="section mb-3">
                 <div className="section__header mb-2">
                     <h2 className={cx('title')}>{title}</h2>
-                    <Button to="/movie" className={cx('more-btn')} btn outline small>
+                    <Button to={to} className={cx('more-btn')} btn outline small>
                         View more
                     </Button>
                 </div>
