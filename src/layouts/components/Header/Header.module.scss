@@ -72,6 +72,8 @@
 
         @include mobile {
             font-size: 1.6rem;
+            min-width: 94px;
+            text-align: center;
         }
     }
 
