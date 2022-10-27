@@ -70,4 +70,7 @@
 }
 
 .name {
+    @include mobile {
+        font-size: 1.25rem;
+    }
 }

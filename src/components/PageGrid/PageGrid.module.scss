@@ -3,7 +3,7 @@
 .wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 24px;
+    gap: 24px 16px;
     margin-bottom: 2rem;
 
     @include tablet {

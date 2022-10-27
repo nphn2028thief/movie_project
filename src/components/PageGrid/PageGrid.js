@@ -37,6 +37,7 @@ function PageGrid({ categoryData }) {
             }
             setItems(response.results);
             setTotalPage(response.total_pages);
+            setPage(1);
         };
 
         getList();
@@ -65,7 +66,7 @@ function PageGrid({ categoryData }) {
             response = await tmdbApi.search(categoryData, params);
         }
         setItems([...items, ...response.results]);
-        setPage((prev) => prev + 1);
+        setPage(page + 1);
     };
 
     return (
