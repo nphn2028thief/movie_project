@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
-import { UilPlay } from '@iconscout/react-unicons';
+import { HiPlay } from 'react-icons/hi2';
 
 import styles from './Card.module.scss';
 import { category } from '~/api/tmdbApi';
@@ -16,7 +16,7 @@ function CardItem({ data, cate }) {
         <Link to={link}>
             <div className={cx('card-item')} style={{ backgroundImage: `url(${backgroundImage})` }}>
                 <button className={cx('play-btn')}>
-                    <UilPlay size="14" />
+                    <HiPlay />
                 </button>
             </div>
             <h3 className={cx('name')}>{data.title || data.name}</h3>

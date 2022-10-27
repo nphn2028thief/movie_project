@@ -3,23 +3,52 @@
 .wrapper {
     @include flex(center, center);
     gap: 1rem;
+}
+
+.content {
+    width: 40%;
+    position: relative;
 
     .search-input {
-        width: 30%;
+        width: 100%;
         background-color: $black-color;
-        padding: 0.7rem 1.5rem;
+        padding: 1rem 3rem 1rem 1.2rem;
         font-size: 0.8rem;
         border-radius: $border-radius;
         color: $white-color;
         font-family: $font-family;
 
         @include tablet {
-            width: 60%;
-            font-size: 1.2rem;
+            padding-right: 3.6rem;
+        }
+    }
+
+    @include tablet {
+        width: 60%;
+        font-size: 1.2rem;
+    }
+
+    @include mobile {
+        width: 100%;
+    }
+
+    .icon {
+        @include flex(center, center);
+
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        transform: translate(0, -50%);
+        color: #bbb;
+
+        @include tablet {
+            right: 12px;
         }
 
         @include mobile {
-            width: 100%;
+            right: 10px;
+            width: 16px;
+            height: 16px;
         }
     }
 }
