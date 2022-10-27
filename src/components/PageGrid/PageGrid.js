@@ -1,10 +1,13 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames/bind';
+
 import styles from './PageGrid.module.scss';
 import tmdbApi, { category, movieType, tvType } from '~/api/tmdbApi';
 import CardItem from '../Card/CardItem';
 import Button from '../Button';
+import Search from '../Search';
+import useDebounce from '~/hooks/useDebounce';
 
 const cx = classNames.bind(styles);
 
@@ -12,15 +15,20 @@ function PageGrid({ categoryData }) {
     const [items, setItems] = useState([]);
     const [page, setPage] = useState(1);
     const [totalPage, setTotalPage] = useState(0);
+    const [keywordSearch, setKeywordSearch] = useState('');
 
-    const { keyword } = useParams();
+    const debounceValue = useDebounce(keywordSearch, 1000);
 
+    const navigate = useNavigate();
+
+    /* Get List movie/tv */
     useEffect(() => {
         const getList = async () => {
             let response = null;
 
-            if (keyword === undefined) {
+            if (!debounceValue.trim()) {
                 const params = {};
+
                 switch (categoryData) {
                     case category.movie:
                         response = await tmdbApi.getMoviesList(movieType.upcoming, params);
@@ -30,10 +38,11 @@ function PageGrid({ categoryData }) {
                 }
             } else {
                 const params = {
-                    query: keyword,
+                    query: debounceValue,
                 };
 
                 response = await tmdbApi.search(categoryData, params);
+                navigate(`/${category[categoryData]}/search/${debounceValue}`);
             }
             setItems(response.results);
             setTotalPage(response.total_pages);
@@ -41,12 +50,13 @@ function PageGrid({ categoryData }) {
         };
 
         getList();
-    }, [categoryData, keyword]);
+    }, [categoryData, debounceValue, navigate]);
 
+    /* Load more function */
     const handleLoadMore = async () => {
         let response = null;
 
-        if (keyword === undefined) {
+        if (!debounceValue.trim()) {
             const params = {
                 page: page + 1,
             };
@@ -60,7 +70,7 @@ function PageGrid({ categoryData }) {
         } else {
             const params = {
                 page: page + 1,
-                query: keyword,
+                query: debounceValue,
             };
 
             response = await tmdbApi.search(categoryData, params);
@@ -71,6 +81,8 @@ function PageGrid({ categoryData }) {
 
     return (
         <>
+            <Search keywordData={keywordSearch} handleChange={(e) => setKeywordSearch(e.target.value)} />
+
             <div className={cx('wrapper')}>
                 {items.map((item) => (
                     <CardItem key={item.id} data={item} cate={categoryData} />

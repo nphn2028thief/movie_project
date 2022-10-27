@@ -1,0 +1,25 @@
+@use '../../scss/' as *;
+
+.wrapper {
+    @include flex(center, center);
+    gap: 1rem;
+
+    .search-input {
+        width: 30%;
+        background-color: $black-color;
+        padding: 0.7rem 1.5rem;
+        font-size: 0.8rem;
+        border-radius: $border-radius;
+        color: $white-color;
+        font-family: $font-family;
+
+        @include tablet {
+            width: 60%;
+            font-size: 1.2rem;
+        }
+
+        @include mobile {
+            width: 100%;
+        }
+    }
+}
