@@ -4,16 +4,20 @@
     margin-top: 1rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-    gap: 1rem;
+    gap: 1.4rem 1rem;
 }
 
 /* Cast Item */
 .image {
     padding-top: 160px;
     background-size: cover;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.7rem;
 }
 
 .name {
     font-size: 0.8rem;
+
+    @include tablet {
+        font-size: 1rem;
+    }
 }
