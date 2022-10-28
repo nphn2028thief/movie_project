@@ -115,6 +115,14 @@
             padding-right: 1.9rem;
         }
 
+        .act-btn {
+            @include mobile {
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+                font-size: 1.2rem;
+            }
+        }
+
         @include mobile {
             display: grid;
             grid-template-columns: 1fr 1fr;

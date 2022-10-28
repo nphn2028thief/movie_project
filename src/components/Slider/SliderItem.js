@@ -29,10 +29,15 @@ function SliderItem({ data, isActive, onClick }) {
                     <h2 className={cx('title')}>{data.title}</h2>
                     <div className={cx('overview')}>{data.overview}</div>
                     <div className={cx('action-btn')}>
-                        <Button btn primary className={cx('watch-btn')} onClick={() => handleNavigate(data.id)}>
+                        <Button
+                            btn
+                            primary
+                            className={cx('watch-btn', 'act-btn')}
+                            onClick={() => handleNavigate(data.id)}
+                        >
                             Watch Now
                         </Button>
-                        <Button btn outline onClick={onClick}>
+                        <Button btn outline onClick={onClick} className={cx('act-btn')}>
                             Watch Trailer
                         </Button>
                     </div>
