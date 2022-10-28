@@ -1,0 +1,19 @@
+@use '../../scss/' as *;
+
+.wrapper {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 1rem;
+}
+
+/* Cast Item */
+.image {
+    padding-top: 160px;
+    background-size: cover;
+    margin-bottom: 0.5rem;
+}
+
+.name {
+    font-size: 0.8rem;
+}

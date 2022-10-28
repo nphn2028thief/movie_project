@@ -56,7 +56,7 @@ function PageGrid({ categoryData }) {
     const handleLoadMore = async () => {
         let response = null;
 
-        if (!debounceValue.trim()) {
+        if (!keywordSearch.trim()) {
             const params = {
                 page: page + 1,
             };
@@ -70,7 +70,7 @@ function PageGrid({ categoryData }) {
         } else {
             const params = {
                 page: page + 1,
-                query: debounceValue,
+                query: keywordSearch,
             };
 
             response = await tmdbApi.search(categoryData, params);
@@ -78,6 +78,11 @@ function PageGrid({ categoryData }) {
         setItems([...items, ...response.results]);
         setPage(page + 1);
     };
+
+    // const handleChange = (e) => {
+    //     setKeywordSearch(e.target.value);
+    //     document.title = e.target.value;
+    // };
 
     return (
         <>

@@ -19,7 +19,7 @@ import CardItem from './CardItem';
 
 const cx = classNames.bind(styles);
 
-function Card({ title, to, category, type, id, delay }) {
+function Card({ title, to = false, category, type, id, delay }) {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
@@ -50,9 +50,11 @@ function Card({ title, to, category, type, id, delay }) {
             <div className="section mb-3">
                 <div className="section__header mb-2">
                     <h2 className={cx('title')}>{title}</h2>
-                    <Button to={to} className={cx('more-btn')} btn outline small>
-                        View more
-                    </Button>
+                    {to && (
+                        <Button to={to} className={cx('more-btn')} btn outline small>
+                            View more
+                        </Button>
+                    )}
                 </div>
 
                 <div className={cx('trending-list')}>

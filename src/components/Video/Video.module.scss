@@ -1,0 +1,12 @@
+@use '../../scss/' as *;
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+}
+
+/* Video Item */
+.title {
+    margin-bottom: 0.8rem;
+}
