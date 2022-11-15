@@ -9,6 +9,7 @@ const cx = classNames.bind(styles);
 
 function Video({ movieId }) {
     const [videos, setVideos] = useState([]);
+    const [embedId, setEmbedId] = useState(1);
 
     const { category } = useParams();
 
@@ -16,7 +17,8 @@ function Video({ movieId }) {
         const getVideos = async () => {
             const response = await tmdbApi.getVideos(category, movieId);
             setVideos(response.results.slice(0, 5));
-            console.log(response);
+            setEmbedId(response.id);
+            // console.log(response);
         };
 
         getVideos();
@@ -24,6 +26,8 @@ function Video({ movieId }) {
 
     return (
         <div className={cx('wrapper')}>
+            <VideoItem id={embedId} />
+
             {videos.map((video) => (
                 <VideoItem key={video.id} data={video} />
             ))}

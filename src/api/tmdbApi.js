@@ -30,6 +30,9 @@ const tmdbApi = {
         const url = cate + '/' + id + '/videos';
         return axiosClient.get(url, { params: {} });
     },
+    // getMovieOfficial: (id) => {
+    //     return axiosClient.get(id);
+    // },
     search: (cate, params) => {
         const url = 'search/' + cate;
         return axiosClient.get(url, { params });

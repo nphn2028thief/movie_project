@@ -3,6 +3,7 @@ import apiConfig from './apiConfig';
 
 const axiosClient = axios.create({
     baseURL: apiConfig.baseUrl,
+    // embedURL: apiConfig.embedUrl,
     headers: {
         'Content-Type': 'application/json',
     },
