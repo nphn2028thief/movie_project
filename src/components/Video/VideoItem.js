@@ -21,7 +21,7 @@ function VideoItem({ data, id }) {
                     <iframe
                         ref={iframeRef}
                         title="Video"
-                        src={`https://2embed.org/embed/${id}`}
+                        src={`https://2embed.cc/embed/${id}`}
                         width="100%"
                         allowFullScreen
                     ></iframe>
